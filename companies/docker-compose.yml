@@ -2,8 +2,8 @@ version: '3.8'
 services:
   companies:
     container_name: companies
-    build: 
-      args: 
+    build:
+      args:
         user: admin
         uid: 1000
       context: ./
@@ -11,7 +11,7 @@ services:
     image: laravel-app
     restart: unless-stopped
     working_dir: /var/www
-    volumes: 
+    volumes:
       - ./:/var/www
     networks:
       - microservices
@@ -20,19 +20,19 @@ services:
     container_name: companies_nginx
     image: nginx:alpine
     restart: unless-stopped
-    ports: 
+    ports:
       - 8000:80
       - 443:443
-    volumes: 
+    volumes:
       - ./:/var/www
       - ./docker/nginx/:/etc/nginx/conf.d/
     networks:
       - microservices
 
-  companies_db:
-    container_name: companies_db
+  system_db:
+    container_name: system_db
     image: mariadb:10.5
-    restart: unless-stopped 
+    restart: unless-stopped
     environment:
       MYSQL_DATABASE: ${DB_DATABASE}
       MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
