@@ -1,6 +1,7 @@
 version: '3.8'
 services:
   companies:
+    container_name: companies
     build: 
       args: 
         user: admin
@@ -16,6 +17,7 @@ services:
       - microservices
 
   companies_nginx:
+    container_name: companies_nginx
     image: nginx:alpine
     restart: unless-stopped
     ports: 
@@ -28,6 +30,7 @@ services:
       - microservices
 
   companies_db:
+    container_name: companies_db
     image: mariadb:10.5
     restart: unless-stopped 
     environment:
