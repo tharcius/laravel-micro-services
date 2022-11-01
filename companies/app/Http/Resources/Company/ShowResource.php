@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources\Company;
 
+use App\Models\Company;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class ShowResource extends JsonResource
@@ -14,6 +15,9 @@ class ShowResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'name' => $this->name
+        ];
     }
 }
